@@ -33,7 +33,29 @@ With the [Genie Space enabled](url) during dashboard publication, users can _"As
 
 Our example walkthrough highlights the following:    
 
-### Databricks Features
+### Databricks Features (with Integrated Highlights)
+
+| Area | Feature | Role in this solution | Why it matters |
+|------|---------|-----------------------|----------------|
+| **Data & Governance** | **[Lakehouse / Delta](https://docs.databricks.com/en/delta/index.html)** | Stores FASTA raw files and derived protein tables (`enriched_protein`, semantic and research-enriched tables). | Central, scalable store for all protein data and features. |
+| **Data & Governance** | **[Unity Catalog](https://docs.databricks.com/en/data-governance/unity-catalog/index.html)** | Governs access to tables and SQL functions (`scientific2simple`, `get_protein_research_info`). | Secure, governed foundation shared by DLT, AI/BI dashboards, and Genie. |
+| **Data Engineering** | **[Delta Live Tables (DLT)](https://docs.databricks.com/en/delta-live-tables/index.html)** | Pipeline that ingests and preprocesses FASTA into structured protein tables with quality checks. | Reliable, declarative ETL so downstream AI/BI always sees clean, current data. |
+| **Computation** | **[pandas UDFs](https://docs.databricks.com/en/sql/user-defined-functions/python.html)** | Applies vectorized protein language model inference during the Protein Classification step. | Scales Python/ML inference across large protein datasets. |
+| **SQL & AIBI** | **[Databricks SQL](https://docs.databricks.com/en/sql/index.html)** | Runs aggregations and joins for distributions, counts, and high-confidence protein subsets. | Single query layer for both classic analytics and AI-enriched columns. |
+| **SQL & AIBI** | **[AI/BI Dashboards](https://docs.databricks.com/en/ai-bi/index.html)** | Presents tiles for summary stats, distributions, organism comparisons, and detailed protein tables. | Visual exploration of protein data for non-coders. |
+| **SQL & AIBI** | **Dashboard parameters & visuals** | Filters (Organism_SimpleTerm, score thresholds, ProteinType) and charts/tables bound to SQL. | Interactive “what‑if” exploration within the dashboard. |
+| **AI Integration** | **[`ai_query()` / AI functions](https://docs.databricks.com/en/generative-ai/ai-functions.html)** | SQL entry point to LLMs, used inside `scientific2simple` and `get_protein_research_info`. | Directly augments tables with AI-generated fields from within SQL. |
+| **AI Integration** | **[Databricks hosted LLMs as FMAPI (e.g., Llama 3)](https://docs.databricks.com/aws/en/machine-learning/model-serving/score-foundation-models)** | Power `scientific2simple()` to convert scientific organism/protein text into layman terms. | Creates the semantic layer (`Organism_SimpleTerm`, `SimpleTerms`). |
+| **AI Integration** | **[External models (e.g., GPT‑4o)](https://docs.databricks.com/en/generative-ai/external-models.html)** | Power `get_protein_research_info()` to attach recent/under‑researched context. | Turns rows into actionable research leads. |
+| **AI Integration** | **[UC SQL Functions](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-function.html)** | Registers `scientific2simple()` and `get_protein_research_info()` as reusable SQL functions. | Standardizes and reuses AI logic across queries, dashboards, and Genie. |
+| **Exploration UX** | **EDA & ad‑hoc queries** | Parameterized tiles and queries for distributions, diversity, and high‑confidence subsets. | Guided and custom exploration on the same governed data. |
+| **Exploration UX** | **Precomputed enrichment** | Stores AI-enriched research info in UC tables consumed by the dashboard. | Fast interaction without repeated external model calls. |
+| **Conversational Analytics** | **[Genie](https://docs.databricks.com/en/genie/index.html)** | Natural-language interface over the same UC tables and functions. | Lets users explore proteins and insights via chat instead of SQL. |
+| **Operationalization** | **AI semantic layer** | `Organism_SimpleTerm` and `SimpleTerms` reused by dashboards and Genie. | Bridges scientific jargon and business-friendly search/filter terms. |
+
+
+
+<!-- ### Databricks Features
 
 | Area | Feature | How it’s used in this Solution Accelerator | Why it matters / Highlight |
 |------|---------|-----------------------------------------------|----------------------------|
@@ -53,7 +75,7 @@ Our example walkthrough highlights the following:
 | **Exploratory & Analytical UX** | **Ad‑hoc parameterized queries** | Section 3.1.1 supports ad-hoc, parameterized queries using `Organism_SimpleTerm` and `ProteinClassificationScore`, including more expensive AI-enriched queries. | Gives power users a way to go deeper than canned tiles, tailoring high-cost AI analyses to specific organisms and thresholds. |
 | **Exploratory & Analytical UX** | **Precomputation for performance** | Section 3.1.2 uses precomputed research info (e.g., `organism_protein_research_info`) surfaced via `get_protein_research_info()` for fast exploration. | Balances insight and performance: users get AI-enriched context quickly without repeated live calls to external models. |
 | **Conversational Analytics** | **[Genie (AI/BI Genie)](https://docs.databricks.com/en/genie/index.html)** | A Genie space is associated with the same UC data and AI functions; users ask natural-language questions and Genie generates SQL, tables, or charts. | Enables conversational analytics on top of the same Lakehouse — non-SQL users can still explore protein data and insights using natural language. |
-| **Operationalization & Reuse** | **AI-driven semantic layer (Organism_SimpleTerm & SimpleTerms)** | AI-generated simple terms (via `scientific2simple()`) represent organisms and concepts in layman language and are reused by both dashboards and Genie. | Creates a reusable semantic layer that connects scientific data with business-friendly language, driving both UX and discoverability. |
+| **Operationalization & Reuse** | **AI-driven semantic layer (Organism_SimpleTerm & SimpleTerms)** | AI-generated simple terms (via `scientific2simple()`) represent organisms and concepts in layman language and are reused by both dashboards and Genie. | Creates a reusable semantic layer that connects scientific data with business-friendly language, driving both UX and discoverability. | -->
 
 ---   
 
