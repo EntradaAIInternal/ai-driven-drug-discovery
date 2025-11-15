@@ -12,7 +12,7 @@ How can GenAI help identify promising, under-researched proteins and uncover the
 
 ---   
 
-The associated [set of notebooks](path?) corresponding to the [**_AI-Driven Drug Discovery_**]((path?) mainly involves data preparation and external foundational model endpoint setup and usage. 
+The associated [set of notebooks](path?) corresponding to the [**_AI-Driven Drug Discovery_**](path?) mainly involves data preparation and external foundational model endpoint setup and usage. 
 
 The notebooks cover: [01 protein data pre-processing](path?), [02 protein classification](path?), and will also leverage GenAI to [03 help democratize scientific knowledge](path?) as well as with [04 downstream discovery efforts](path?). 
 
@@ -37,7 +37,7 @@ Our example walkthrough highlights the following:
 
 | Area | Feature | How it’s used in this Solution Accelerator | Why it matters / Highlight |
 |------|---------|-----------------------------------------------|----------------------------|
-| **Data & Governance** | **[Lakehouse (Delta tables)](https://docs.databricks.com/en/delta/index.html)** | FASTA protein information, sequences, classifications, and enriched outputs (e.g., `enriched_protein`, `organism_info_scientificnsimple`, `organism_protein_research_info`) are stored as Delta tables in the Lakehouse. | Provides a single source of truth for all protein data and derived features, enabling consistent BI + AI workloads on governed, scalable storage. |
+| **Data & Governance** | **[Delta Lake (Delta tables)](https://docs.databricks.com/en/delta/index.html)** | FASTA protein information, sequences, classifications, and enriched outputs (e.g., `enriched_protein`, `organism_info_scientificnsimple`, `organism_protein_research_info`) are stored as Delta tables in the Lakehouse. | Provides a single source of truth for all protein data and derived features, enabling consistent BI + AI workloads on governed, scalable storage. |
 | **Data & Governance** | **[Unity Catalog (UC)](https://docs.databricks.com/en/data-governance/unity-catalog/index.html)** | Governs access to raw FASTA files and all derived tables, plus AI-backed SQL functions like `scientific2simple()` and `get_protein_research_info()`. | Ensures secure, governed access to both data and AI functions so the same assets safely power AI/BI Dashboards and Genie. |
 | **Data Engineering** | **[Delta Live Tables (DLT)](https://docs.databricks.com/en/delta-live-tables/index.html)** | A DLT pipeline ingests and preprocesses FASTA raw files into structured protein tables (e.g., `enriched_protein`), applying quality checks and transformations. | Provides a declarative, reliable pipeline for building and maintaining up-to-date protein datasets that the downstream AI and dashboards can trust. |
 | **Computation / Transformation** | **[pandas UDFs](https://docs.databricks.com/en/sql/user-defined-functions/python.html)** | A pandas UDF is used in the Protein Classification step to apply vectorized protein language model inference over batches of sequences. | Enables scalable, high-throughput application of ML inference or complex Python logic directly over large data sets in the Lakehouse. |
