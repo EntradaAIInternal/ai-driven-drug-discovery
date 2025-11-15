@@ -20,7 +20,8 @@ The following diagram illustrates the flow of processes involved and the [Databr
 
 ![architecture sketch](./assets/imgs/AI-Drug-Discovery-Page2.png) 
 
-The [processed data](url-catalog?) and [served external foundational model endpoint](url-?) will be used to create the associated [AI/BI Dashboard](url?) -- please see for documentation/etc.: 
+The [processed data written to Unity Catalog](https://docs.databricks.com/aws/en/data-governance/unity-catalog) and [served external foundational model endpoint](https://docs.databricks.com/en/generative-ai/external-models.html) will be used to create the associated [AI/BI Dashboard](https://docs.databricks.com/aws/en/dashboards/) -- we provide an exported dashboard template in the `/dashboards` folder.
+
 > _**`to provide an example of how GenAI can be leveraged to discover more about protein properties and whether there are candidate proteins that are under-researched in areas that show promise for potential drug discovery.`**_
 
 When a [AIBI dashboard is Genie Space enabled](https://docs.databricks.com/aws/en/dashboards/genie-spaces) during publication, users can _"Ask Genie"_ about the datasets and [additional example questions](./dashboards/GenieSpace_AdditionalExampleQs_GeneratedQueries) are provided as guidance. 
