@@ -5,10 +5,7 @@ How GenAI can help identify promising, under-researched proteins and uncover the
 [![Unity Catalog](https://img.shields.io/badge/Unity_Catalog-Enabled-00A1C9?style=for-the-badge)](https://docs.databricks.com/en/data-governance/unity-catalog/index.html)
 [![Serverless](https://img.shields.io/badge/Serverless-Compute-00C851?style=for-the-badge)](https://docs.databricks.com/en/compute/serverless.html)
 
-## Overview
-
-<!-- This repository is intended to be a _`"playground"`_ where we share **Applications of Computer Vision Solutions on Databricks**. As a start we will highlight [Instance Segmentation](https://www.ultralytics.com/glossary/instance-segmentation) application(s) in medical imaging using [Ultralytics **YOLO** (You Only Look Once)](https://github.com/ultralytics/ultralytics) framework. Other CV applications will be added when available.    
-<!-- _... stay tuned!_   -->     
+## Overview  
 
 ---   
 ### [todo update links]
@@ -21,7 +18,7 @@ The following diagram illustrates the flow of processes involved and the [Databr
 
 ![architecture sketch](./assets/imgs/AI-Drug-Discovery-Page2.png) 
 
-The [processed data written to Unity Catalog](https://docs.databricks.com/aws/en/data-governance/unity-catalog) and [served external foundational model endpoint](https://docs.databricks.com/en/generative-ai/external-models.html) will be used to create the associated [AI/BI Dashboard](https://docs.databricks.com/aws/en/dashboards/); e.g. [saved as pdf for sharing](./assets/imgs/AI-Driven Drug Discovery [Dashboard].jpg). 
+The [processed data written to Unity Catalog](https://docs.databricks.com/aws/en/data-governance/unity-catalog) and [served external foundational model endpoint](https://docs.databricks.com/en/generative-ai/external-models.html) will be used to create the associated [AI/BI Dashboard](https://docs.databricks.com/aws/en/dashboards/); e.g. [saved as pdf for sharing](`./assets/imgs/AI-Driven Drug Discovery [Dashboard].jpg`). 
 
 <!-- > _**`to provide an example of how GenAI can be leveraged to discover more about protein properties and whether there are candidate proteins that are under-researched in areas that show promise for potential drug discovery.`**_ -->
 
