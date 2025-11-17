@@ -10,8 +10,7 @@
 
 ## REPLACE THE VALUES BELOW WITH YOUR OWN BEFORE running the notebooks:
 
-CATALOG_NAME = "mmt_demos2"      # TODO: Replace with <your_catalog_name>
-# CATALOG_NAME = "<your_catalog_name>"      # TODO: Replace with <your_catalog_name>
+CATALOG_NAME = "<your_catalog_name>"      # TODO: Replace with <your_catalog_name>
 SCHEMA_NAME = "ai_driven_drug_discovery"  # TODO: Replace with <your_schema_name>
 VOLUME_NAME = "protein_seq"               # TODO: Replace with <your_volume_name> for file storage
 ENDPOINT_NAME = "az_openai_gpt4o"         # TODO: Replace with <your_external_endpoint_name> e.g. AI Gateway endpoint name
