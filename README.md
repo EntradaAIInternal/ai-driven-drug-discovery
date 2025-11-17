@@ -56,10 +56,10 @@ Our example walkthrough highlights the following:
 
 Clone this repository to your Databricks Workspace.    
 
-You will find the set of notebooks referenced above within the `/notebooks` folder, the dashboards json files within `/dashboards`.    
+You will find the set of notebooks referenced above within the [`/notebooks`](notebooks) folder, the dashboards json files within [`/dashboards`](dashboards).    
 Dashboard Unity Catalog-tables will need to be re-referenced after they are being generated via the notebooks. 
 
-Please refer to `README.md` within [`./notebooks`](notebook/README.md) section for more details about each notebook and how to run them and refer to the `README.md` within [`./dashboards`](dashboards/README.md) for guidance on dashboard configurations.
+Please refer to [`README.md` within `./notebooks`](notebooks/README.md) section for more details about each notebook and how to run them and refer to the [`README.md` within `./dashboards`](dashboards/README.md) for guidance on dashboard configurations.
 
 <br>
 
