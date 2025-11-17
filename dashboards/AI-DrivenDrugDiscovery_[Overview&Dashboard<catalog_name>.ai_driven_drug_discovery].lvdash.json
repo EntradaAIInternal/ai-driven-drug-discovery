@@ -10,7 +10,7 @@
         "  COUNT(*) AS count,\n",
         "  ROUND((COUNT(*) * 100.0 / SUM(COUNT(*)) OVER()), 2) AS percentage\n",
         "FROM\n",
-        "  mmt_demos2.ai_driven_drug_discovery.proteinclassification_tiny\n",
+        "  <catalog_name>.ai_driven_drug_discovery.proteinclassification_tiny\n",
         "GROUP BY\n",
         "  label"
       ]
@@ -43,7 +43,7 @@
         "  END AS Weight_Bin,\n",
         "  COUNT(*) AS Count\n",
         "FROM\n",
-        "  mmt_demos2.ai_driven_drug_discovery.proteinclassification_tiny\n",
+        "  <catalog_name>.ai_driven_drug_discovery.proteinclassification_tiny\n",
         "WHERE\n",
         "  label ILIKE '%soluble%'\n",
         "GROUP BY\n",
@@ -80,7 +80,7 @@
         "  END AS Weight_Bin,\n",
         "  COUNT(*) AS Count\n",
         "FROM\n",
-        "  mmt_demos2.ai_driven_drug_discovery.proteinclassification_tiny\n",
+        "  <catalog_name>.ai_driven_drug_discovery.proteinclassification_tiny\n",
         "WHERE\n",
         "  label ILIKE '%membrane%'\n",
         "GROUP BY\n",
@@ -98,7 +98,7 @@
         "  COUNT(*) AS count,\n",
         "  ROUND((COUNT(*) * 100.0 / SUM(COUNT(*)) OVER()), 2) AS percentage\n",
         "FROM\n",
-        "  mmt_demos2.ai_driven_drug_discovery.proteinclassification_tiny\n",
+        "  <catalog_name>.ai_driven_drug_discovery.proteinclassification_tiny\n",
         "WHERE\n",
         "  score > 0.85\n",
         "GROUP BY\n",
@@ -114,7 +114,7 @@
         "  -- COUNT(*) AS Count\n",
         "  COUNT(DISTINCT ProteinName) AS Protein_Count\n",
         "FROM\n",
-        "  mmt_demos2.ai_driven_drug_discovery.proteinclassification_tiny\n",
+        "  <catalog_name>.ai_driven_drug_discovery.proteinclassification_tiny\n",
         "WHERE\n",
         "  label ILIKE '%membrane%'\n",
         "  -- :label ILIKE '%' || :label || '%' --'%membrane%'\n",
@@ -138,9 +138,9 @@
         "  collect_set(p.ProteinName) AS Distinct_Protein_Names,\n",
         "  o.SimpleTermDict \n",
         "FROM\n",
-        "  mmt_demos2.ai_driven_drug_discovery.proteinclassification_tiny p\n",
+        "  <catalog_name>.ai_driven_drug_discovery.proteinclassification_tiny p\n",
         "JOIN\n",
-        "  mmt_demos2.ai_driven_drug_discovery.tinysample_organism_info_scientificnsimple o \n",
+        "  <catalog_name>.ai_driven_drug_discovery.tinysample_organism_info_scientificnsimple o \n",
         "  ON p.OrganismName = o.OrganismName\n",
         "WHERE\n",
         "  p.score > 0.85\n",
@@ -165,8 +165,8 @@
         "  ARRAY_AGG(DISTINCT o.SimpleTermDict) AS SimpleTerms,\n",
         "  ARRAY_AGG(DISTINCT p.OrganismName) AS OrganismNames\n",
         "FROM\n",
-        "  mmt_demos2.ai_driven_drug_discovery.proteinclassification_tiny p\n",
-        "  JOIN mmt_demos2.ai_driven_drug_discovery.tinysample_organism_info_scientificnsimple o ON p.OrganismName = o.OrganismName\n",
+        "  <catalog_name>.ai_driven_drug_discovery.proteinclassification_tiny p\n",
+        "  JOIN <catalog_name>.ai_driven_drug_discovery.tinysample_organism_info_scientificnsimple o ON p.OrganismName = o.OrganismName\n",
         "GROUP BY\n",
         "  p.ProteinName\n",
         "  -- p.label\n",
@@ -190,8 +190,8 @@
         "  p.OrganismName,\n",
         "  o.Organism_SimpleTerm\n",
         "FROM\n",
-        "  mmt_demos2.ai_driven_drug_discovery.proteinclassification_tiny p\n",
-        "  JOIN mmt_demos2.ai_driven_drug_discovery.tinysample_organism_info_scientificnsimple o \n",
+        "  <catalog_name>.ai_driven_drug_discovery.proteinclassification_tiny p\n",
+        "  JOIN <catalog_name>.ai_driven_drug_discovery.tinysample_organism_info_scientificnsimple o \n",
         "  ON p.OrganismName = o.OrganismName\n",
         "-- WHERE\n",
         "--   (COALESCE(:Organism_SimpleTerm, '') = '' OR o.Organism_SimpleTerm ILIKE '%' || :Organism_SimpleTerm || '%')"
@@ -206,7 +206,7 @@
         "  -- COUNT(*) AS Count\n",
         "  COUNT(DISTINCT ProteinName) AS Protein_Count\n",
         "FROM\n",
-        "  mmt_demos2.ai_driven_drug_discovery.proteinclassification_tiny\n",
+        "  <catalog_name>.ai_driven_drug_discovery.proteinclassification_tiny\n",
         "WHERE\n",
         "  label ILIKE '%soluble%'\n",
         "  -- :label ILIKE '%' || :label || '%' \n",
@@ -225,7 +225,7 @@
         "  OrganismName,\n",
         "  Organism_SimpleTerm,\n",
         "  ProteinName,\n",
-        "  mmt_demos2.ai_driven_drug_discovery.get_protein_research_info(ProteinName) AS researchDict,\n",
+        "  <catalog_name>.ai_driven_drug_discovery.get_protein_research_info(ProteinName) AS researchDict,\n",
         "  researchDict.information AS information,\n",
         "  researchDict.recent_research AS recent_research,\n",
         "  researchDict.under_researched_areas AS under_researched_areas,\n",
@@ -243,8 +243,8 @@
         "    p.OrganismName,\n",
         "    o.Organism_SimpleTerm\n",
         "  FROM\n",
-        "    mmt_demos2.ai_driven_drug_discovery.proteinclassification_tiny p\n",
-        "    JOIN mmt_demos2.ai_driven_drug_discovery.tinysample_organism_info_scientificNsimple o \n",
+        "    <catalog_name>.ai_driven_drug_discovery.proteinclassification_tiny p\n",
+        "    JOIN <catalog_name>.ai_driven_drug_discovery.tinysample_organism_info_scientificNsimple o \n",
         "      ON p.OrganismName = o.OrganismName\n",
         "  WHERE \n",
         "    p.score > :ProteinClassificationScore \n",
@@ -288,21 +288,21 @@
       "name": "ebefdafa",
       "displayName": "proteinclassification_tiny",
       "queryLines": [
-        "SELECT * FROM mmt_demos2.ai_driven_drug_discovery.proteinclassification_tiny"
+        "SELECT * FROM <catalog_name>.ai_driven_drug_discovery.proteinclassification_tiny"
       ]
     },
     {
       "name": "baea7edb",
       "displayName": "proteinclassification_organism_info_llm2simpleterms2",
       "queryLines": [
-        "SELECT * FROM mmt_demos2.ai_driven_drug_discovery.tinysample_organism_info_scientificnsimple"
+        "SELECT * FROM <catalog_name>.ai_driven_drug_discovery.tinysample_organism_info_scientificnsimple"
       ]
     },
     {
       "name": "82e85554",
       "displayName": "tinysample_organism_protein_research_info",
       "queryLines": [
-        "SELECT * FROM mmt_demos2.ai_driven_drug_discovery.tinysample_organism_protein_research_info\n",
+        "SELECT * FROM <catalog_name>.ai_driven_drug_discovery.tinysample_organism_protein_research_info\n",
         "ORDER BY OrganismName"
       ]
     }
@@ -366,7 +366,7 @@
                 "\n",
                 "The following diagram illustrates the flow of processes involved and the [Databricks Intelligent Platform](https://www.databricks.com/resources/demos/tours/horizontal/introducing-databricks-intelligence-platform) features utilized (in red):   \n",
                 "\n",
-                "![](https://e2-demo-field-eng.cloud.databricks.com/ajax-api/2.0/fs/files//Volumes/mmt_demos2/ai_driven_drug_discovery/imgs/AI-Drug-Discovery-Page2o.png)\n",
+                "![](https://e2-demo-field-eng.cloud.databricks.com/ajax-api/2.0/fs/files//Volumes/<catalog_name>/ai_driven_drug_discovery/imgs/AI-Drug-Discovery-Page2o.png)\n",
                 "\n",
                 "--- \n",
                 "\n",
@@ -379,7 +379,7 @@
                 "- `tinysample_organism_info_scientificNsimple`: contains scientific (`OrganismName`), layman (`Organism_SimpleTerm`), and corresponding `Organism_Definition` information about the different organisms found in the `proteinclassification_tiny` table. It is derived with [ai\\_query](https://e2-demo-west.cloud.databricks.com/editor/notebooks/1625373258635024?o=2556758628403379#command/1625373258638832) using the pay-per-token [Foundational Model API](https://docs.databricks.com/en/machine-learning/foundation-models/index.html) `databricks-meta-llama-3-3-70b-instruct` [model endpoint](https://docs.databricks.com/en/machine-learning/model-serving/index.html) and making [batch interferencing](https://e2-demo-west.cloud.databricks.com/editor/notebooks/1625373258635024?o=2556758628403379#command/1625373258638913) with the `ai_query()` registered as a [User Defined Function in Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).     <br>---\n",
                 "- `tinysample_organism_protein_research_info`: contains research information about organisms and their associated proteins, including `recent research` and `under-researched areas` of these proteins that show potential promise for drug discovery. These research insights are derived with the help of [using Azure OpenAI GPT-4o served as an External Model Endpoint](https://docs.databricks.com/aws/en/machine-learning/model-serving/create-foundation-model-endpoints#ext-model-endpoint) and [queried as an External Model using `ai-query()`](https://docs.databricks.com/en/large-language-models/ai-query-external-model.html). For more efficient exploration, the queries for our `tinysample` of proteins are [preprocessed in bulk](https://e2-demo-west.cloud.databricks.com/editor/notebooks/1625373258636712?o=2556758628403379%3Fparent%3Dfolders%2F1625373258638091#command/1625373258641291).      \n",
                 "\n",
-                "These tables are found within the demo workspace [Unity Catalog](https://docs.databricks.com/en/catalogs/index.html) and [Schema](https://docs.databricks.com/en/schemas/index.html#what-is-a-schema): [<catalog\\_name>.ai\\_driven\\_drug\\_discovery](https://e2-demo-west.cloud.databricks.com/explore/data/demos_genie/hls_ai_drug_discovery?o=2556758628403379) and are connected primarily through the `OrganismName`.        \n",
+                "These tables are found within the demo workspace [Unity Catalog](https://docs.databricks.com/en/catalogs/index.html) and [Schema](https://docs.databricks.com/en/schemas/index.html#what-is-a-schema): [`demos_genie.hls_ai_drug_discovery`](https://e2-demo-west.cloud.databricks.com/explore/data/demos_genie/hls_ai_drug_discovery?o=2556758628403379) and are connected primarily through the `OrganismName`.        \n",
                 "\n",
                 "--- \n",
                 "<p>&nbsp;</p>\n",
@@ -405,7 +405,7 @@
             "x": 0,
             "y": 0,
             "width": 6,
-            "height": 34
+            "height": 20
           }
         }
       ],
